@@ -17,11 +17,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from . import views
+from .todoListView import TodoListView
 
 urlpatterns = [
     path('', views.index, name='index'),
     path('about', views.about, name='about'),
     path('admin/', admin.site.urls),
     path('search/<str:keyword>/<int:page>/', views.search, name='search'),
-    path('maps', views.maps, name='maps')
+    path('maps', views.maps, name='maps'),
+    
+    # API todo
+    path('api/todos', TodoListView.as_view(), name='todos')
 ]
